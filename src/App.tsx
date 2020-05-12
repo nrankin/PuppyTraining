@@ -9,20 +9,32 @@
  */
 
 import React from 'react'
-import {SafeAreaView, ScrollView, StatusBar} from 'react-native'
 import HomeScreen from './screens/main/HomeScreen'
-import {Text, View} from './components/base'
+import IndependenceScreen from './screens/main/IndependenceScreen'
+import {NavigationContainer} from '@react-navigation/native'
+import {createDrawerNavigator} from '@react-navigation/drawer'
+import {SafeAreaProvider} from 'react-native-safe-area-context'
+import {ThemeProvider} from 'styled-components/native'
+import theme from './theme'
+
+export type AppParamList = {
+  Home: undefined
+  Independence: undefined
+}
+const Drawer = createDrawerNavigator<AppParamList>()
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <HomeScreen />
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Home">
+            <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="Independence" component={IndependenceScreen} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </SafeAreaProvider>
   )
 }
 
