@@ -4,18 +4,25 @@ import {LargeHeader} from '../components/headers'
 import {Text, View} from '../components/base'
 import {ScrollView} from 'react-native-gesture-handler'
 
-export default function CrateTrainingScreen() {
-  console.log('rendering?')
+//  interface CrateScreenProps = {
+//     navigation: CompositeNavigationProp<
+//     MaterialTopTabNavigationProp<IndependenceParamList>,
+//     DrawerNavigationProp<AppParamList, 'Independence'>
+//   >
+// }
+
+export default function CrateTrainingScreen(): React.ReactElement {
+  //   const {navigation} = props
   return (
-    <ScrollView>
-      <View flex={2} padding={2}>
-        <LargeHeader text="Crate Training" />
-        <Text>something</Text>
-        <Text>something</Text>
-        <Text>something</Text>
-        <Text>something</Text>
-        <Text>something</Text>
+    <View backgroundColor="background2">
+      <LargeHeader text="Crate Training" />
+      <View padding={4}>
+        <Text>some text</Text>
+        <Text>some text</Text>
+        <Text>some text</Text>
+        <Text>some text</Text>
+        <Text>some text</Text>
       </View>
-    </ScrollView>
+    </View>
   )
 }

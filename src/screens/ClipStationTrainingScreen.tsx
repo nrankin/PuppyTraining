@@ -1,17 +1,18 @@
 import React from 'react'
-// import {SafeAreaView} from 'react-native-safe-area-context'
 import {LargeHeader} from '../components/headers'
 import {Text, View} from '../components/base'
 
-export default function ClipStationTrainingScreen() {
+export default function ClipStationTrainingScreen(): React.ReactElement {
   return (
-    <View flex={2} backgroundColor="primary">
+    <View backgroundColor="background2">
       <LargeHeader text="Clip Station Training" />
-      <Text>some text</Text>
-      <Text>some text</Text>
-      <Text>some text</Text>
-      <Text>some text</Text>
-      <Text>some text</Text>
+      <View padding={4}>
+        <Text>some text</Text>
+        <Text>some text</Text>
+        <Text>some text</Text>
+        <Text>some text</Text>
+        <Text>some text</Text>
+      </View>
     </View>
   )
 }

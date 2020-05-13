@@ -1,23 +1,27 @@
-import React from 'react'
-import {Button, Text} from '../../components/base'
-import {SafeAreaView} from 'react-native-safe-area-context'
-import {LargeHeader} from '../../components/headers'
+import React, {Component} from 'react'
 import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack'
+import {
+  createMaterialTopTabNavigator,
+  MaterialTopTabNavigationProp,
+} from '@react-navigation/material-top-tabs'
 import CrateTrainingScreen from '../CrateTrainingScreen'
 import ClipStationTrainingScreen from '../ClipStationTrainingScreen'
+import IndependenceOverviewScreen from '../IndependenceOverviewScreen'
 import {AppParamList} from '../../App'
 import {CompositeNavigationProp} from '@react-navigation/native'
 import {DrawerNavigationProp} from '@react-navigation/drawer'
+import {SafeAreaView} from 'react-native-safe-area-context'
+// import Collapsible from 'react-native-collapsible'
+// import Accordion from 'react-native-collapsible/Accordion'
 
 type IndependenceParamList = {
+  IndependenceOverviewScreen: undefined
   CrateTraining: undefined
   ClipStationTraining: undefined
 }
-
-const IndependenceStack = createStackNavigator<IndependenceParamList>()
 
 interface IndependenceScreenProps {
   navigation: CompositeNavigationProp<
@@ -26,42 +30,53 @@ interface IndependenceScreenProps {
   >
 }
 
-export default function IndependenceScreen(props: IndependenceScreenProps) {
+const IndependenceTopTab = createMaterialTopTabNavigator<
+  IndependenceParamList
+>()
+
+interface IndependenceScreenProps {
+  navigation: CompositeNavigationProp<
+    MaterialTopTabNavigationProp<IndependenceParamList>,
+    DrawerNavigationProp<AppParamList, 'Independence'>
+  >
+}
+
+export default function IndependenceScreen(
+  props: IndependenceScreenProps,
+): React.ReactElement {
   const {navigation} = props
   return (
-    <SafeAreaView>
-      <LargeHeader text="Independence" />
-      <Text fontSize={1} padding={2}>
-        Your puppy needs to be able to be by themselves at times.{' '}
-      </Text>
-      <Text fontSize={1} padding={2}>
-        They need to be able to relax even if you aren't in the room, or you're
-        out of the house. If they can't, they may develop separation anxiety.
-      </Text>
-      <Text fontSize={1} padding={2}>
-        There are 2 training exercises that help with separation training for
-        independence.
-      </Text>
-      <Button
-        color="black"
-        title="Crate Training"
-        onPress={() => navigation.navigate('CrateTraining')}
-      />
-      <Button
-        color="black"
-        title="Clip Station Training"
-        onPress={() => navigation.navigate('ClipStationTraining')}
-      />
-      <IndependenceStack.Navigator initialRouteName="CrateTraining">
-        <IndependenceStack.Screen
+    <SafeAreaView style={{flex: 4}}>
+      <IndependenceTopTab.Navigator
+        initialRouteName="IndependenceOverviewScreen"
+        tabBarPosition={'top'}
+        tabBarOptions={{
+          activeTintColor: '#e91e63',
+          labelStyle: {fontSize: 12},
+          style: {backgroundColor: 'powderblue'},
+        }}>
+        <IndependenceTopTab.Screen
+          name="IndependenceOverviewScreen"
+          component={IndependenceOverviewScreen}
+          options={{
+            tabBarLabel: 'Independence Overview',
+          }}
+        />
+        <IndependenceTopTab.Screen
           name="CrateTraining"
           component={CrateTrainingScreen}
+          options={{
+            tabBarLabel: 'Crate Training',
+          }}
         />
-        <IndependenceStack.Screen
+        <IndependenceTopTab.Screen
           name="ClipStationTraining"
           component={ClipStationTrainingScreen}
+          options={{
+            tabBarLabel: 'Clip Station Training',
+          }}
         />
-      </IndependenceStack.Navigator>
+      </IndependenceTopTab.Navigator>
     </SafeAreaView>
   )
 }
