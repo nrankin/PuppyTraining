@@ -19,18 +19,23 @@ import theme from './theme'
 
 export type AppParamList = {
   Home: undefined
-  Independence: undefined
+  Independence: {dogName: string}
 }
 const Drawer = createDrawerNavigator<AppParamList>()
 
 const App = () => {
+  const dogName: string = 'Tigger'
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name="Home" component={HomeScreen} />
-            <Drawer.Screen name="Independence" component={IndependenceScreen} />
+            <Drawer.Screen
+              name="Independence"
+              component={IndependenceScreen}
+              initialParams={{dogName: dogName}}
+            />
           </Drawer.Navigator>
         </NavigationContainer>
       </ThemeProvider>

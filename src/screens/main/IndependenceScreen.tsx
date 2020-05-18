@@ -17,17 +17,10 @@ import {SafeAreaView} from 'react-native-safe-area-context'
 // import Collapsible from 'react-native-collapsible'
 // import Accordion from 'react-native-collapsible/Accordion'
 
-type IndependenceParamList = {
-  IndependenceOverviewScreen: undefined
-  CrateTraining: undefined
-  ClipStationTraining: undefined
-}
-
-interface IndependenceScreenProps {
-  navigation: CompositeNavigationProp<
-    StackNavigationProp<IndependenceParamList>,
-    DrawerNavigationProp<AppParamList, 'Independence'>
-  >
+export type IndependenceParamList = {
+  IndependenceOverviewScreen: {dogName: string} | undefined
+  CrateTraining: {dogName: string} | undefined
+  ClipStationTraining: {dogName: string} | undefined
 }
 
 const IndependenceTopTab = createMaterialTopTabNavigator<
@@ -39,20 +32,21 @@ interface IndependenceScreenProps {
     MaterialTopTabNavigationProp<IndependenceParamList>,
     DrawerNavigationProp<AppParamList, 'Independence'>
   >
+  route: any
 }
 
 export default function IndependenceScreen(
   props: IndependenceScreenProps,
 ): React.ReactElement {
-  const {navigation} = props
+  const dogName: string = props.route.params.dogName
   return (
     <SafeAreaView style={{flex: 4}}>
       <IndependenceTopTab.Navigator
         initialRouteName="IndependenceOverviewScreen"
         tabBarPosition={'top'}
         tabBarOptions={{
-          activeTintColor: '#e91e63',
-          labelStyle: {fontSize: 12},
+          activeTintColor: '#af3330',
+          labelStyle: {textTransform: 'none', fontSize: 16},
           style: {backgroundColor: 'powderblue'},
         }}>
         <IndependenceTopTab.Screen
@@ -61,6 +55,7 @@ export default function IndependenceScreen(
           options={{
             tabBarLabel: 'Independence Overview',
           }}
+          initialParams={{dogName: dogName}}
         />
         <IndependenceTopTab.Screen
           name="CrateTraining"
@@ -68,6 +63,7 @@ export default function IndependenceScreen(
           options={{
             tabBarLabel: 'Crate Training',
           }}
+          initialParams={{dogName: dogName}}
         />
         <IndependenceTopTab.Screen
           name="ClipStationTraining"
@@ -75,8 +71,102 @@ export default function IndependenceScreen(
           options={{
             tabBarLabel: 'Clip Station Training',
           }}
+          initialParams={{dogName: dogName}}
         />
       </IndependenceTopTab.Navigator>
     </SafeAreaView>
   )
 }
+
+// <AccordionView />
+
+// class AccordionView extends Component {
+//   state = {
+//     activeSections: [],
+//   }
+
+//   _renderSectionTitle = (section) => {
+//     return (
+//       <View margin={10}>
+//         <Text fontSize={4} textAlign="center">
+//           {section.title + ' title'}
+//         </Text>
+//       </View>
+//     )
+//   }
+
+//   _renderHeader = (section) => {
+//     return (
+//       <View>
+//         <Text fontSize={2} textAlign="center">
+//           {section.title + ' header'}
+//         </Text>
+//       </View>
+//     )
+//   }
+
+//   _renderContent = (section) => {
+//     return (
+//       <View>
+//         <Text fontSize={1} textAlign="center">
+//           {section.content}
+//         </Text>
+//       </View>
+//     )
+//   }
+
+//   _updateSections = (activeSections) => {
+//     this.setState({activeSections})
+//   }
+
+//   render() {
+//     return (
+//       <Accordion
+//         sections={SECTIONS}
+//         activeSections={this.state.activeSections}
+//         renderSectionTitle={this._renderSectionTitle}
+//         renderHeader={this._renderHeader}
+//         renderContent={this._renderContent}
+//         onChange={this._updateSections}
+//       />
+//     )
+//   }
+// }
+
+// interface SectionProps {
+//   section: {title: string; content: string}
+// }
+
+// function renderSectionTitle(props: SectionProps): React.ReactElement {
+//   const {section} = props
+//   return (
+//     <View>
+//       <Text>{section.content}</Text>
+//     </View>
+//   )
+// }
+
+// function renderHeader(props: SectionProps): React.ReactElement {
+//   const {section} = props
+//   return (
+//     <View>
+//       <Text>{section.title}</Text>
+//     </View>
+//   )
+// }
+
+// function renderContent(props: SectionProps): React.ReactElement {
+//   const {section} = props
+//   return (
+//     <View>
+//       <Text>{section.content}</Text>
+//     </View>
+//   )
+// }
+// interface UpdateSectionProps {
+//   activeSections: []
+// }
+// function updateSections(props: UpdateSectionProps) {
+//   const {activeSections} = props
+//   setState({activeSections})
+// }

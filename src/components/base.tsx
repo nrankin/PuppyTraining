@@ -39,3 +39,6 @@ export const Button = styled.Button<ButtonProps>(baseSystem)
 
 export type ScrollViewProps = BaseProps<ReactNative.ScrollViewProps>
 export const ScrollView = styled.ScrollView<ScrollViewProps>(baseSystem)
+
+export type TextInputProps = BaseProps<ReactNative.TextInputProps>
+export const TextInput = styled.TextInput<TextInputProps>(baseSystem)
