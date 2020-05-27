@@ -33,18 +33,7 @@ export default function HomeScreen(): React.ReactElement {
             value={puppyName}
             placeholder="Enter your puppy's name"
             placeholderTextColor="gray"></TextInput>
-          {/* <TouchableOpacity
-            style={{
-              backgroundColor: 'pink',
-              padding: 6,
-              borderRadius: 20,
-              marginTop: 15,
-            }}
-            onPress={() => setPuppyName(puppyName)}>
-            <Text textAlign="center" fontSize={2}>
-              Enter
-            </Text>
-          </TouchableOpacity> */}
+
           <Text fontSize={3} textAlign="center" padding={3}>
             {puppyName != '' && helloPuppy}
           </Text>

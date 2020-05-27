@@ -35,7 +35,6 @@ export default function CrateTrainingScreen(
   props: CrateScreenProps,
 ): React.ReactElement {
   const dogName: string = props.route.params.dogName
-  const welcomeText = 'Welcome ' + dogName + '!'
   return (
     <View flex={2} padding={2}>
       <ExerciseInstructions
