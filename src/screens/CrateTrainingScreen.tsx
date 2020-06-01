@@ -7,7 +7,7 @@ import { CompositeNavigationProp } from '@react-navigation/native'
 import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
 import { IndependenceParamList } from './main/IndependenceScreen'
-import { AppParamList } from '../App'
+import { AppParamList } from '../app/App'
 import ExerciseInstructions from '../components/ExerciseInstructions'
 import ExerciseRecord from '../components/ExerciseRecord'
 
@@ -39,7 +39,7 @@ export default function CrateTrainingScreen(
     <View flex={2} padding={2}>
       <ExerciseInstructions
         header={'Crate Training for ' + dogName}
-        description="For quiet during the night, actually train her during the day initially."
+        description="For quiet during the night, actually train them during the day initially."
         steps={EXERCISE_STEPS}
       />
       <ExerciseRecord

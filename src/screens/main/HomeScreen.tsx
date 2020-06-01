@@ -3,10 +3,21 @@ import { Button, Image, Text, TextInput, View } from '../../components/base'
 import { LargeHeader } from '../../components/headers'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Alert, TouchableOpacity } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../../app/rootReducer'
+import { doSetPuppy } from '../../store/dog'
 
 export default function HomeScreen(): React.ReactElement {
-  const [puppyName, setPuppyName] = useState('')
+  // const [puppyName, setPuppyName] = useState('')
+
+  const dispatch = useDispatch()
+  const { entity } = useSelector((state: RootState) => state.puppy)
+  console.log(entity)
+  const puppyName = entity.name || 'puppy'
   const helloPuppy = 'Hi ' + puppyName + '!'
+  const setPuppy = (name: string, ageWeeks: number) => {
+    dispatch(doSetPuppy({ name, ageWeeks }))
+  }
 
   return (
     <SafeAreaView>
@@ -29,13 +40,14 @@ export default function HomeScreen(): React.ReactElement {
               marginTop: 15,
               textAlign: 'center',
             }}
-            onChangeText={(puppyName) => setPuppyName(puppyName)}
-            value={puppyName}
+            onChangeText={(puppyName) => setPuppy(puppyName, 8)}
+            value={entity.name}
             placeholder="Enter your puppy's name"
-            placeholderTextColor="gray"></TextInput>
+            placeholderTextColor="gray"
+          />
 
           <Text fontSize={3} textAlign="center" padding={3}>
-            {puppyName != '' && helloPuppy}
+            {entity.name != null && helloPuppy}
           </Text>
         </View>
         <Image

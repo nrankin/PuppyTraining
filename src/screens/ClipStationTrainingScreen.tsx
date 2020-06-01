@@ -7,7 +7,7 @@ import { CompositeNavigationProp } from '@react-navigation/native'
 import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs'
 import { IndependenceParamList } from './main/IndependenceScreen'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
-import { AppParamList } from 'App'
+import { AppParamList } from 'app/App'
 
 const EXERCISE_STEPS = [
   { id: '1', title: 'ensure she is tired and toileted' },
