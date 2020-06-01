@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Image, Text, TextInput, View } from '../../components/base'
+import React from 'react'
+import { Image, Text, TextInput, View } from '../../components/base'
 import { LargeHeader } from '../../components/headers'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Alert, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../app/rootReducer'
 import { doSetPuppy } from '../../store/dog'
 
 export default function HomeScreen(): React.ReactElement {
-  // const [puppyName, setPuppyName] = useState('')
-
   const dispatch = useDispatch()
   const { entity } = useSelector((state: RootState) => state.puppy)
   console.log(entity)

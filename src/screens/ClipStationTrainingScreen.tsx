@@ -1,6 +1,5 @@
 import React from 'react'
-import { LargeHeader } from '../components/headers'
-import { Text, View } from '../components/base'
+import { View } from '../components/base'
 import ExerciseInstructions from '../components/ExerciseInstructions'
 import ExerciseRecord from '../components/ExerciseRecord'
 import { CompositeNavigationProp } from '@react-navigation/native'

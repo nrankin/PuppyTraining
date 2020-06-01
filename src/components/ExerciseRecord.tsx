@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Checkbox from '@react-native-form/checkbox'
 
 import { View, Text } from './base'
-import { FlatList, Alert, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import { SmallHeader } from './headers'
 
 interface ExerciseRecordProps {

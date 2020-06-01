@@ -1,8 +1,6 @@
 import React from 'react'
 
-import { LargeHeader } from '../components/headers'
-import { Text, View } from '../components/base'
-import { ScrollView } from 'react-native-gesture-handler'
+import { View } from '../components/base'
 import { CompositeNavigationProp } from '@react-navigation/native'
 import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
