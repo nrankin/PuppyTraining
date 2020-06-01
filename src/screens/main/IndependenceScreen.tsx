@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
   createStackNavigator,
   StackNavigationProp,
@@ -10,17 +10,17 @@ import {
 import CrateTrainingScreen from '../CrateTrainingScreen'
 import ClipStationTrainingScreen from '../ClipStationTrainingScreen'
 import IndependenceOverviewScreen from '../IndependenceOverviewScreen'
-import {AppParamList} from '../../App'
-import {CompositeNavigationProp} from '@react-navigation/native'
-import {DrawerNavigationProp} from '@react-navigation/drawer'
-import {SafeAreaView} from 'react-native-safe-area-context'
+import { AppParamList } from '../../app/App'
+import { CompositeNavigationProp } from '@react-navigation/native'
+import { DrawerNavigationProp } from '@react-navigation/drawer'
+import { SafeAreaView } from 'react-native-safe-area-context'
 // import Collapsible from 'react-native-collapsible'
 // import Accordion from 'react-native-collapsible/Accordion'
 
 export type IndependenceParamList = {
-  IndependenceOverviewScreen: {dogName: string} | undefined
-  CrateTraining: {dogName: string} | undefined
-  ClipStationTraining: {dogName: string} | undefined
+  IndependenceOverviewScreen: { dogName: string } | undefined
+  CrateTraining: { dogName: string } | undefined
+  ClipStationTraining: { dogName: string } | undefined
 }
 
 const IndependenceTopTab = createMaterialTopTabNavigator<
@@ -40,14 +40,14 @@ export default function IndependenceScreen(
 ): React.ReactElement {
   const dogName: string = props.route.params.dogName
   return (
-    <SafeAreaView style={{flex: 4}}>
+    <SafeAreaView style={{ flex: 4 }}>
       <IndependenceTopTab.Navigator
         initialRouteName="IndependenceOverviewScreen"
         tabBarPosition={'top'}
         tabBarOptions={{
           activeTintColor: '#af3330',
-          labelStyle: {textTransform: 'none', fontSize: 16},
-          style: {backgroundColor: 'powderblue'},
+          labelStyle: { textTransform: 'none', fontSize: 16 },
+          style: { backgroundColor: 'powderblue' },
         }}>
         <IndependenceTopTab.Screen
           name="IndependenceOverviewScreen"
@@ -55,7 +55,7 @@ export default function IndependenceScreen(
           options={{
             tabBarLabel: 'Independence Overview',
           }}
-          initialParams={{dogName: dogName}}
+          initialParams={{ dogName: dogName }}
         />
         <IndependenceTopTab.Screen
           name="CrateTraining"
@@ -63,7 +63,7 @@ export default function IndependenceScreen(
           options={{
             tabBarLabel: 'Crate Training',
           }}
-          initialParams={{dogName: dogName}}
+          initialParams={{ dogName: dogName }}
         />
         <IndependenceTopTab.Screen
           name="ClipStationTraining"
@@ -71,7 +71,7 @@ export default function IndependenceScreen(
           options={{
             tabBarLabel: 'Clip Station Training',
           }}
-          initialParams={{dogName: dogName}}
+          initialParams={{ dogName: dogName }}
         />
       </IndependenceTopTab.Navigator>
     </SafeAreaView>
