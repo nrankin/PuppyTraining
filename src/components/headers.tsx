@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
-import { Text } from './base'
+import { Button, Text, View } from './base'
+// import theme from './../theme'
 
 export interface HeaderProps {
   text: string
@@ -7,9 +8,14 @@ export interface HeaderProps {
 export function LargeHeader(props: HeaderProps): React.ReactElement {
   const { text } = props
   return (
-    <Text textAlign="center" padding={2} fontSize={6} backgroundColor="primary">
-      {text}
-    </Text>
+    <View flexDirection="row" backgroundColor="primary">
+      <Button transparent>
+        <Text color="white">Burger</Text>
+      </Button>
+      <Text textAlign="center" padding={2} fontSize={6}>
+        {text}
+      </Text>
+    </View>
   )
 }
 

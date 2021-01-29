@@ -1,4 +1,12 @@
+// with help from
+// - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/reflexbox/index.d.ts
+// - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/rebass/index.d.ts
+// - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/styled-system/index.d.ts
+// - https://github.com/GeekyAnts/NativeBase/blob/master/index.d.ts
+
+// import React from 'react'
 import * as ReactNative from 'react-native'
+import * as NativeBase from 'native-base'
 import {
   background,
   BackgroundProps,
@@ -23,19 +31,20 @@ export interface BaseKnownProps
 
 export const baseSystem = compose(background, color, flexbox, space, typography)
 
-export type BaseProps<T> = BaseKnownProps & Omit<T, keyof BaseKnownProps>
+export type BaseProps<T = NativeBase.View> = BaseKnownProps &
+  Omit<T, keyof BaseKnownProps>
 
-export type ViewProps = BaseProps<ReactNative.ViewProps>
-export const View = styled.View<ViewProps>(baseSystem)
+export type ViewProps = BaseProps<NativeBase.NativeBase.View>
+export const View = styled(NativeBase.View)<ViewProps>(baseSystem)
 
-export type TextProps = BaseProps<ReactNative.TextProps>
-export const Text = styled.Text<TextProps>(baseSystem)
+export type TextProps = BaseProps<NativeBase.NativeBase.Text>
+export const Text = styled(NativeBase.Text)<TextProps>(baseSystem)
 
-export type ImageProps = BaseProps<ReactNative.ImageProps>
-export const Image = styled.Image<ImageProps>(baseSystem)
+export type ImageProps = BaseProps<ReactNative.Image>
+export const Image = styled(ReactNative.Image)<ImageProps>(baseSystem)
 
-export type ButtonProps = BaseProps<ReactNative.ButtonProps>
-export const Button = styled.Button<ButtonProps>(baseSystem)
+export type ButtonProps = BaseProps<NativeBase.NativeBase.Button>
+export const Button = styled(NativeBase.Button)<ButtonProps>(baseSystem)
 
 export type ScrollViewProps = BaseProps<ReactNative.ScrollViewProps>
 export const ScrollView = styled.ScrollView<ScrollViewProps>(baseSystem)
