@@ -1,15 +1,16 @@
 import React from 'react'
-import {Button, Text, View} from '../components/base'
-import {LargeHeader} from '../components/headers'
+import { Button, Text, View } from '../components/base'
+import { LargeHeader } from '../components/headers'
 
 export default function IndependenceOverviewScreen({
   route,
   navigation,
 }): React.ReactElement {
   const dogName: string = route.params.dogName
+
   return (
     <View>
-      <LargeHeader text="Independence Overview" />
+      <LargeHeader title="Independence Overview" navigation={navigation} />
       <View padding={4}>
         <Text fontSize={1} padding={2}>
           {dogName} needs to be able to be by themself at times.
