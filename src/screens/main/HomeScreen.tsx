@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Image, Text, TextInput, View } from '../../components/base'
+import React, { useState } from 'react'
+import { Image, Text, TextInput, View } from '../../components/base'
 import { LargeHeader } from '../../components/headers'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Alert, TouchableOpacity } from 'react-native'
+import { DrawerNavigationProp } from '@react-navigation/drawer'
+import { AppParamList } from 'App'
 
-export default function HomeScreen(): React.ReactElement {
+type NavigationProp = DrawerNavigationProp<AppParamList, 'Independence'>
+
+interface Props {
+  navigation: NavigationProp
+}
+
+export default function HomeScreen(props: Props): React.ReactElement {
+  const { navigation } = props
   const [puppyName, setPuppyName] = useState('')
   const helloPuppy = 'Hi ' + puppyName + '!'
 
   return (
     <SafeAreaView>
       <View>
-        <LargeHeader text="Puppy Training" />
+        <LargeHeader title="Puppy Training" navigation={navigation} />
+
         <View padding={4} justifyContent="space-between">
           <Text fontSize={1} padding={2}>
             Learn and record your puppy's progress so you always know what to
